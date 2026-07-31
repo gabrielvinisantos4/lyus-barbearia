@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Barbearia LYU'S — Unisingle Academy · Lóbbus</title>
+<meta name="description" content="Barbearia LYU'S em Colorado, PR. Desde 2017. Barbearia, formação de barbeiros pela Unisingle Academy e a linha de produtos Lóbbus.">
+<meta name="theme-color" content="#0A0A0A">
+
+<!--
+  ═══════════════════════════════════════════════════════════
+  FALTA PREENCHER  →  procure por  [TROCAR]
+  · horários de funcionamento
+  · @ do Instagram das três marcas
+  · linha de produtos da Lóbbus
+  · formatos/turmas da Unisingle Academy
+  ═══════════════════════════════════════════════════════════
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+/* acento animável entre os três territórios */
+@property --acento{syntax:'<color>';inherits:true;initial-value:#F5D211}
+
+:root{
+  --preto:#0A0A0A;
+  --carvao:#141312;
+  --lyus:#F5D211;
+  --uni:#E7A313;
+  --lob:#35B4DE;
+  --osso:#EDE7DA;
+  --tijolo:#8A4326;
+  --fumaca:rgba(237,231,218,.55);
+  --linha:rgba(237,231,218,.12);
+  --display:"Archivo Black",Impact,"Haettenschweiler",sans-serif;
+  --corpo:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --mono:"Space Mono","Courier New",monospace;
+  --pad:clamp(20px,5vw,72px);
+  --acento:#F5D211;
+}
+body.t-lyus{--acento:#F5D211}
+body.t-academy{--acento:#E7A313}
+body.t-lobbus{--acento:#35B4DE}
+body{transition:--acento 1.1s ease}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;scroll-behavior:auto}
+body{
+  background:var(--preto);color:var(--osso);
+  font-family:var(--corpo);font-size:16px;line-height:1.55;
+  overflow-x:hidden;-webkit-font-smoothing:antialiased;
+}
+img,video{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--acento);outline-offset:3px;border-radius:2px}
+
+/* ── texto utilitário ─────────────────────────────── */
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--acento)}
+.eyebrow.mudo{color:var(--fumaca)}
+.h-display{font-family:var(--display);text-transform:uppercase;line-height:.88;letter-spacing:-.02em}
+
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
+.reveal.is-in{opacity:1;transform:none}
+.reveal[data-delay="1"]{transition-delay:.1s}
+.reveal[data-delay="2"]{transition-delay:.2s}
+.reveal[data-delay="3"]{transition-delay:.3s}
+
+/* ── nav ──────────────────────────────────────────── */
+.nav{
+  position:fixed;inset:0 0 auto 0;z-index:60;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding:13px var(--pad);border-bottom:1px solid transparent;
+  transition:background .4s ease,backdrop-filter .4s ease,border-color .4s ease;
+}
+.nav.solto{background:rgba(10,10,10,.86);backdrop-filter:blur(14px);border-bottom-color:var(--linha)}
+.nav__logo{height:32px;width:auto}
+.nav a:has(.nav__logo){display:flex;align-items:center;min-height:44px;padding:6px 0}
+.nav__meio{display:none;gap:26px}
+.nav__meio a{
+  font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--fumaca);transition:color .3s ease;position:relative;padding-bottom:3px;
+}
+.nav__meio a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:1px;background:var(--acento);transition:right .35s cubic-bezier(.16,1,.3,1)}
+.nav__meio a:hover{color:var(--osso)}
+.nav__meio a:hover::after,.nav__meio a.ativo::after{right:0}
+.nav__meio a.ativo{color:var(--osso)}
+
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--acento);color:#0A0A0A;
+  font-family:var(--mono);font-weight:700;font-size:11px;
+  letter-spacing:.16em;text-transform:uppercase;
+  padding:11px 18px;border-radius:2px;
+  transition:transform .25s ease,box-shadow .25s ease,background .8s ease;
+}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 26px rgba(255,255,255,.14)}
+.btn--linha{background:transparent;color:var(--acento);border:1px solid var(--acento)}
+.btn--linha:hover{background:var(--acento);color:#0A0A0A}
+
+/* ══ HERO ═════════════════════════════════════════ */
+.hero{position:relative;height:100svh;min-height:580px;overflow:hidden}
+.hero__midia{position:absolute;inset:0;will-change:transform}
+.hero__midia video{width:100%;height:100%;object-fit:cover;filter:saturate(.85) contrast(1.06) brightness(.6)}
+.hero__veu{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(120% 80% at 50% 30%,transparent 18%,rgba(10,10,10,.74) 100%),
+    linear-gradient(180deg,rgba(10,10,10,.82) 0%,transparent 26%,transparent 52%,var(--preto) 100%);
+}
+.hero__conteudo{
+  position:relative;height:100%;z-index:3;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:0 var(--pad) clamp(60px,11vh,110px);will-change:transform,opacity;
+}
+.hero__marca{width:clamp(72px,10vw,110px);margin-bottom:20px}
+.hero__titulo{
+  font-family:var(--display);text-transform:uppercase;
+  font-size:clamp(58px,17vw,220px);line-height:.82;letter-spacing:-.035em;color:var(--osso);
+}
+.hero__titulo em{font-style:normal;color:var(--lyus)}
+.hero__linha{display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center;margin-top:24px}
+/* assinatura de grupo */
+.hero__grupo{
+  display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;
+  margin-top:26px;padding-top:20px;border-top:1px solid var(--linha);
+  font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--fumaca);
+}
+.hero__grupo b{color:var(--osso);font-weight:400}
+.hero__grupo i{font-style:normal;opacity:.4}
+.hero__desce{
+  position:absolute;left:50%;bottom:18px;transform:translateX(-50%);z-index:4;
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+  font-family:var(--mono);font-size:9px;letter-spacing:.24em;color:var(--fumaca);
+}
+.hero__desce span{display:block;width:1px;height:34px;background:linear-gradient(var(--acento),transparent);animation:desce 2.2s ease-in-out infinite}
+@keyframes desce{0%,100%{opacity:.25;transform:scaleY(.4);transform-origin:top}50%{opacity:1;transform:scaleY(1)}}
+
+/* ══ trilho de luz ════════════════════════════════ */
+.trilho{overflow:hidden;background:var(--preto)}
+.trilho svg{width:100%;height:clamp(48px,7vw,88px);display:block}
+.trilho polyline{
+  fill:none;stroke:var(--acento);stroke-width:3;stroke-linecap:square;
+  stroke-dasharray:1400;stroke-dashoffset:1400;
+  filter:drop-shadow(0 0 10px currentColor);color:var(--acento);
+  transition:stroke-dashoffset 1.6s cubic-bezier(.16,1,.3,1),stroke .8s ease;
+}
+.trilho.is-in polyline{stroke-dashoffset:0}
+
+/* ══ manifesto (palavras acendem) ═════════════════ */
+.manifesto{padding:clamp(84px,15vh,180px) var(--pad);max-width:1240px;margin:0 auto}
+.manifesto__texto{
+  font-family:var(--display);text-transform:uppercase;
+  font-size:clamp(25px,5.2vw,68px);line-height:1.07;letter-spacing:-.02em;margin-top:28px;
+}
+.manifesto__texto .p{color:rgba(237,231,218,.15);transition:color .5s ease;display:inline-block;margin-right:.26em}
+.manifesto__texto .p.on{color:var(--osso)}
+.manifesto__texto .p.destaque.on{color:var(--acento)}
+.manifesto__rodape{display:grid;gap:26px;margin-top:clamp(44px,7vw,76px);max-width:780px}
+.manifesto__rodape p{color:var(--fumaca);font-size:clamp(15px,1.5vw,18px)}
+
+/* ══ serviços ═════════════════════════════════════ */
+.servicos{padding:clamp(64px,10vh,110px) var(--pad) clamp(84px,13vh,150px);border-top:1px solid var(--linha)}
+.servicos__topo{max-width:1240px;margin:0 auto clamp(34px,5vw,58px)}
+.servicos__titulo{font-family:var(--display);text-transform:uppercase;font-size:clamp(30px,5vw,58px);line-height:.95;margin-top:14px}
+.lista{max-width:1240px;margin:0 auto;border-top:1px solid var(--linha)}
+.item{
+  display:grid;grid-template-columns:38px 1fr;gap:18px;align-items:start;
+  padding:clamp(22px,3.2vw,32px) 0;border-bottom:1px solid var(--linha);
+  position:relative;transition:padding-left .4s cubic-bezier(.16,1,.3,1);
+}
+.item::before{content:"";position:absolute;left:0;top:0;bottom:0;width:0;background:var(--acento);opacity:.06;transition:width .5s cubic-bezier(.16,1,.3,1)}
+.item:hover::before{width:100%}
+.item:hover{padding-left:14px}
+.item__num{font-family:var(--mono);font-size:11px;color:var(--acento);letter-spacing:.1em;padding-top:6px}
+.item__nome{font-family:var(--display);text-transform:uppercase;font-size:clamp(21px,3.4vw,38px);line-height:1;letter-spacing:-.015em}
+.item__desc{display:block;font-family:var(--corpo);text-transform:none;font-size:14px;letter-spacing:0;color:var(--fumaca);margin-top:10px;max-width:52ch;font-weight:400;line-height:1.6}
+
+/* ══ a casa (faixa horizontal) ════════════════════ */
+.casa{position:relative;background:var(--carvao)}
+.casa__trilho{height:340vh}
+.casa__grude{position:sticky;top:0;height:100svh;display:flex;align-items:center;overflow:hidden}
+.casa__fita{display:flex;gap:clamp(14px,2vw,28px);padding:0 var(--pad);will-change:transform}
+.quadro{position:relative;flex:0 0 auto;width:clamp(230px,29vw,400px);aspect-ratio:3/4;overflow:hidden;background:#000}
+.quadro img{width:100%;height:100%;object-fit:cover;filter:saturate(.9) contrast(1.04);transition:transform .8s cubic-bezier(.16,1,.3,1)}
+.quadro:hover img{transform:scale(1.05)}
+.quadro__tag{
+  position:absolute;left:0;right:0;bottom:0;padding:16px;
+  background:linear-gradient(transparent,rgba(10,10,10,.92));
+  font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;
+}
+.quadro__tag b{display:block;color:var(--acento);font-weight:700}
+.casa__intro{flex:0 0 auto;width:clamp(250px,34vw,420px);padding-right:clamp(14px,3vw,40px);align-self:center}
+.casa__intro h2{font-family:var(--display);text-transform:uppercase;font-size:clamp(30px,4.6vw,58px);line-height:.94;margin:14px 0 18px}
+.casa__intro p{color:var(--fumaca);font-size:15px}
+
+/* ══ o V ══════════════════════════════════════════ */
+.ov__trilho{height:250vh}
+.ov__grude{position:sticky;top:0;height:100svh;overflow:hidden;display:grid;place-items:center}
+.ov__fundo{position:absolute;inset:0;background:var(--preto)}
+.ov__recorte{position:absolute;inset:0;-webkit-clip-path:url(#v-clip);clip-path:url(#v-clip);will-change:transform}
+.ov__recorte img{width:100%;height:100%;object-fit:cover;filter:saturate(.9) contrast(1.1) brightness(.92)}
+.ov__texto{position:relative;z-index:5;text-align:center;padding:0 var(--pad);max-width:760px}
+.ov__texto::before{
+  content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:150%;height:220%;z-index:-1;
+  background:radial-gradient(ellipse at center,rgba(10,10,10,.9) 0%,rgba(10,10,10,.6) 45%,transparent 72%);
+}
+.ov__texto h2{text-shadow:0 6px 40px rgba(10,10,10,.9);font-family:var(--display);text-transform:uppercase;font-size:clamp(32px,7vw,92px);line-height:.9;letter-spacing:-.03em}
+.ov__texto p{margin-top:20px;font-size:clamp(15px,1.7vw,19px)}
+
+/* ══ portal de troca de marca ═════════════════════ */
+.portal{
+  position:relative;min-height:78svh;display:grid;place-items:center;
+  padding:clamp(80px,14vh,150px) var(--pad);overflow:hidden;text-align:center;
+}
+.portal__fundo{position:absolute;inset:0;z-index:0}
+.portal__fundo video{width:100%;height:100%;object-fit:cover;filter:brightness(.34) saturate(.9)}
+.portal__fundo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,var(--preto),rgba(10,10,10,.55) 40%,rgba(10,10,10,.55) 60%,var(--preto))}
+.portal__conteudo{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:22px;max-width:820px}
+.portal__selo{width:clamp(96px,14vw,150px);filter:drop-shadow(0 10px 40px rgba(0,0,0,.7))}
+.portal__marca{width:clamp(190px,32vw,340px)}
+.portal__titulo{font-family:var(--display);text-transform:uppercase;font-size:clamp(28px,5.4vw,66px);line-height:.94;letter-spacing:-.025em}
+.portal p{color:var(--fumaca);font-size:clamp(15px,1.7vw,19px);max-width:56ch}
+
+/* ══ blocos de texto (academy) ════════════════════ */
+.bloco{padding:clamp(70px,11vh,130px) var(--pad);max-width:1240px;margin:0 auto}
+.bloco__grade{display:grid;gap:clamp(28px,4vw,60px);grid-template-columns:1fr}
+.bloco h2{font-family:var(--display);text-transform:uppercase;font-size:clamp(28px,4.6vw,56px);line-height:.96;margin:14px 0 22px;letter-spacing:-.02em}
+.bloco p{color:var(--fumaca);font-size:clamp(15px,1.6vw,18px);margin-bottom:15px;max-width:62ch}
+.bloco p strong{color:var(--osso);font-weight:600}
+.bloco__foto img{width:100%;filter:contrast(1.05)}
+
+/* dois cartões: missão e visão */
+.par{display:grid;gap:20px;grid-template-columns:1fr;max-width:1240px;margin:0 auto;padding:0 var(--pad) clamp(30px,5vw,50px)}
+.cartao{border:1px solid var(--linha);padding:clamp(26px,3.6vw,44px);position:relative;background:linear-gradient(180deg,rgba(237,231,218,.03),transparent)}
+.cartao::before{content:"";position:absolute;left:0;top:0;width:44px;height:3px;background:var(--acento)}
+.cartao h3{font-family:var(--display);text-transform:uppercase;font-size:clamp(20px,2.8vw,30px);margin:12px 0 16px}
+.cartao p{color:var(--fumaca);font-size:clamp(15px,1.55vw,17px);margin:0}
+
+/* valores */
+.valores{padding:clamp(60px,9vh,100px) var(--pad) clamp(80px,12vh,140px);max-width:1240px;margin:0 auto}
+.valores__grade{display:grid;gap:1px;background:var(--linha);border:1px solid var(--linha);margin-top:clamp(30px,4vw,50px);grid-template-columns:1fr}
+.valor{background:var(--preto);padding:clamp(22px,2.8vw,32px);transition:background .45s ease}
+.valor:hover{background:var(--carvao)}
+.valor__n{font-family:var(--mono);font-size:11px;color:var(--acento);letter-spacing:.14em}
+.valor h3{font-family:var(--display);text-transform:uppercase;font-size:clamp(17px,2.1vw,23px);margin:10px 0 9px;letter-spacing:-.01em}
+.valor p{color:var(--fumaca);font-size:14px;line-height:1.6}
+
+/* manifesto academy — sticky */
+.credo{position:relative}
+.credo__trilho{height:220vh}
+.credo__grude{position:sticky;top:0;min-height:100svh;display:grid;place-items:center;padding:clamp(60px,10vh,110px) var(--pad)}
+.credo__caixa{max-width:1000px;width:100%}
+.credo__texto{font-family:var(--display);text-transform:uppercase;font-size:clamp(22px,4vw,50px);line-height:1.1;letter-spacing:-.02em;margin-top:24px}
+.credo__texto .p{color:rgba(237,231,218,.14);transition:color .45s ease;display:inline-block;margin-right:.24em}
+.credo__texto .p.on{color:var(--osso)}
+.credo__texto .p.destaque.on{color:var(--acento)}
+.credo__tres{display:grid;gap:14px;margin-top:clamp(32px,5vw,56px);grid-template-columns:1fr}
+.credo__tres div{
+  border-left:2px solid var(--acento);padding:10px 0 10px 18px;
+  font-family:var(--display);text-transform:uppercase;font-size:clamp(16px,2.2vw,26px);
+  opacity:0;transform:translateX(-14px);transition:opacity .7s ease,transform .7s ease;
+}
+.credo__tres div.is-in{opacity:1;transform:none}
+.credo__fecho{margin-top:clamp(34px,5vw,56px);color:var(--fumaca);font-size:clamp(15px,1.6vw,18px);max-width:62ch}
+.credo__fecho b{color:var(--acento);font-weight:600}
+
+/* ══ lóbbus ═══════════════════════════════════════ */
+.lobbus{padding:clamp(20px,4vw,50px) var(--pad) clamp(80px,12vh,140px)}
+.lobbus__grade{max-width:1240px;margin:0 auto;display:grid;gap:clamp(30px,5vw,64px);grid-template-columns:1fr;align-items:center}
+.lobbus__lobo{width:min(300px,62vw);margin:0 auto;filter:drop-shadow(0 0 60px rgba(53,180,222,.28))}
+.lobbus h2{font-family:var(--display);text-transform:uppercase;font-size:clamp(28px,4.6vw,58px);line-height:.95;margin:14px 0 20px}
+.lobbus p{color:var(--fumaca);font-size:clamp(15px,1.6vw,18px);margin-bottom:16px;max-width:56ch}
+.lobbus__tags{display:flex;flex-wrap:wrap;gap:9px;margin:22px 0 26px}
+.lobbus__tags span{
+  font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+  border:1px solid var(--linha);padding:7px 13px;color:var(--fumaca);border-radius:2px;
+}
+
+/* ══ fundadores ═══════════════════════════════════ */
+.casal{display:grid;gap:clamp(30px,5vw,70px);align-items:center;padding:clamp(76px,12vh,140px) var(--pad);max-width:1240px;margin:0 auto;grid-template-columns:1fr;border-top:1px solid var(--linha)}
+.casal__foto{position:relative}
+.casal__foto img{width:100%;filter:grayscale(.15) contrast(1.05)}
+.casal__foto::after{content:"";position:absolute;inset:auto -14px -14px auto;width:58%;height:58%;border:1px solid var(--acento);opacity:.45;z-index:-1}
+.casal h2{font-family:var(--display);text-transform:uppercase;font-size:clamp(28px,4.4vw,54px);line-height:.96;margin:14px 0 20px}
+.casal p{color:var(--fumaca);font-size:clamp(15px,1.6vw,18px);margin-bottom:16px}
+
+/* ══ visita ═══════════════════════════════════════ */
+.visita{border-top:1px solid var(--linha);padding:clamp(70px,11vh,130px) var(--pad) 40px}
+.visita__grade{max-width:1240px;margin:0 auto;display:grid;gap:clamp(34px,5vw,60px);grid-template-columns:1fr}
+.visita__chamada h2{font-family:var(--display);text-transform:uppercase;font-size:clamp(34px,7vw,90px);line-height:.88;letter-spacing:-.03em;margin:16px 0 26px}
+.visita__chamada h2 em{font-style:normal;color:var(--acento)}
+.dados{display:grid;gap:26px;grid-template-columns:repeat(auto-fit,minmax(185px,1fr));align-content:start}
+.dado h3{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--acento);margin-bottom:10px;font-weight:700}
+.dado p,.dado a{font-size:15px;color:var(--osso);line-height:1.7}
+.dado a{display:inline-block;padding:4px 0;border-bottom:1px solid var(--linha);transition:border-color .3s}
+.dado a:hover{border-color:var(--acento)}
+.dado span{color:var(--fumaca)}
+.rodape{
+  max-width:1240px;margin:clamp(50px,8vw,90px) auto 0;padding-top:26px;border-top:1px solid var(--linha);
+  display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between;align-items:center;
+  font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--fumaca);
+}
+.rodape__marcas{display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+.rodape__marcas img{height:24px;width:auto;opacity:.6;transition:opacity .3s ease}
+.rodape__marcas img:hover{opacity:1}
+
+/* ══ breakpoints ══════════════════════════════════ */
+@media (min-width:640px){
+  .valores__grade{grid-template-columns:1fr 1fr}
+  .par{grid-template-columns:1fr 1fr}
+  .credo__tres{grid-template-columns:repeat(3,1fr)}
+}
+@media (min-width:900px){
+  .nav__meio{display:flex}
+  .valores__grade{grid-template-columns:repeat(4,1fr)}
+  .bloco__grade{grid-template-columns:1fr 1.15fr}
+  .lobbus__grade{grid-template-columns:.8fr 1fr}
+  .casal{grid-template-columns:.85fr 1fr}
+  .visita__grade{grid-template-columns:1.1fr 1fr}
+  .manifesto__rodape{grid-template-columns:1fr 1fr;gap:40px}
+}
+@media (max-width:719px){
+  .casa__trilho{height:auto}
+  .casa__grude{position:static;height:auto;padding:66px 0}
+  .casa__fita{flex-direction:column;transform:none!important;padding:0 var(--pad);gap:20px}
+  .casa__intro,.quadro{width:100%}
+  .quadro{aspect-ratio:4/5}
+  .ov__trilho{height:180vh}
+  .credo__trilho{height:auto}
+  .credo__grude{position:static;min-height:0}
+}
+
+/* ══ ajustes de toque e leitura (qualquer tela de dedo) ══ */
+@media (max-width:719px), (hover:none){
+  .btn{padding:15px 22px;font-size:12px}
+  .nav{padding:10px var(--pad)}
+  .nav .btn{padding:13px 16px}
+  .eyebrow{font-size:12px}
+  .quadro__tag{font-size:12px;padding:18px;line-height:1.5}
+  .lobbus__tags span{font-size:12px;padding:10px 15px}
+  .rodape{font-size:12px}
+  .valor__n,.item__num{font-size:12px}
+  .hero__grupo{font-size:12px}
+  .quadro__tag b{font-size:12px}
+  .hero__desce{font-size:10px}
+  /* links de contato viram alvos de dedo */
+  .dado a{display:inline-block;padding:11px 0;min-height:44px}
+  .dado p{line-height:1.8}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.001ms!important;transition-duration:.001ms!important}
+  .reveal{opacity:1;transform:none}
+  .manifesto__texto .p,.credo__texto .p{color:var(--osso)}
+  .manifesto__texto .p.destaque,.credo__texto .p.destaque{color:var(--acento)}
+  .credo__tres div{opacity:1;transform:none}
+  .casa__trilho,.credo__trilho{height:auto}
+  .casa__grude{position:static;height:auto;padding:66px 0}
+  .credo__grude{position:static;min-height:0}
+  .casa__fita{flex-direction:column;transform:none!important}
+  .casa__intro,.quadro{width:100%}
+  .hero__desce span{animation:none}
+}
+</style>
+</head>
+<body class="t-lyus">
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <clipPath id="v-clip" clipPathUnits="objectBoundingBox">
+      <path d="M0.09,0.06 L0.30,0.06 L0.50,0.63 L0.70,0.06 L0.91,0.06 L0.58,0.96 L0.42,0.96 Z"/>
+    </clipPath>
+  </defs>
+</svg>
+
+<header class="nav" id="nav">
+  <a href="#topo" aria-label="Barbearia LYU'S — início"><img class="nav__logo" src="assets/logo-amarelo.png" alt="Barbearia LYU'S"></a>
+  <nav class="nav__meio">
+    <a href="#barbearia" data-link="lyus">Barbearia</a>
+    <a href="#academy" data-link="academy">Academy</a>
+    <a href="#lobbus" data-link="lobbus">Lóbbus</a>
+    <a href="#visita">Visita</a>
+  </nav>
+  <a class="btn" href="https://wa.me/5544998306449" target="_blank" rel="noopener">Agendar</a>
+</header>
+
+<!-- ══════════ HERO ══════════ -->
+<section class="hero" id="topo" data-territorio="lyus">
+  <div class="hero__midia" data-parallax>
+    <video src="assets/barbearia.mp4" poster="assets/poster.jpg" autoplay muted loop playsinline></video>
+  </div>
+  <div class="hero__veu"></div>
+
+  <div class="hero__conteudo" data-fade-hero>
+    <img class="hero__marca" src="assets/logo-amarelo.png" alt="" aria-hidden="true">
+    <h1 class="hero__titulo">Lyu<em>'s</em></h1>
+    <div class="hero__linha">
+      <span class="eyebrow">Barbearia</span>
+      <span class="eyebrow mudo">Desde 2017</span>
+      <span class="eyebrow mudo">Colorado · PR</span>
+    </div>
+    <div class="hero__grupo">
+      <b>Barbearia</b><i>/</i><b>Unisingle Academy</b><i>/</i><b>Lóbbus</b>
+    </div>
+  </div>
+
+  <div class="hero__desce" aria-hidden="true"><span></span>role</div>
+</section>
+
+<div class="trilho" data-trilho>
+  <svg viewBox="0 0 1200 60" preserveAspectRatio="none" aria-hidden="true">
+    <polyline points="0,46 100,14 200,46 300,14 400,46 500,14 600,46 700,14 800,46 900,14 1000,46 1100,14 1200,46"/>
+  </svg>
+</div>
+
+<!-- ══════════ MANIFESTO BARBEARIA ══════════ -->
+<section class="manifesto" id="barbearia" data-territorio="lyus">
+  <p class="eyebrow reveal">A régua da casa</p>
+  <h2 class="manifesto__texto h-display" data-palavras>
+    Desde 2017 cortando em Colorado. Máquina, tesoura e navalha — e ninguém sai da cadeira antes de aprovar no espelho.
+  </h2>
+  <div class="manifesto__rodape">
+    <p class="reveal">Três cadeiras, fila que anda e um corte que dura. A gente aprendeu o bairro de dentro pra fora: sabe o degradê que você pediu da última vez e sabe a hora de sugerir outro.</p>
+    <p class="reveal" data-delay="1">E se o filho vier junto, tem carrinho ligado na frente do espelho pra ele encarar a primeira máquina sem chorar.</p>
+  </div>
+</section>
+
+<!-- ══════════ SERVIÇOS ══════════ -->
+<section class="servicos" data-territorio="lyus">
+  <div class="servicos__topo">
+    <p class="eyebrow reveal">O que a gente faz</p>
+    <h2 class="servicos__titulo reveal" data-delay="1">Serviços</h2>
+  </div>
+  <div class="lista">
+    <article class="item reveal">
+      <span class="item__num">01</span>
+      <h3 class="item__nome">Corte
+        <span class="item__desc">Máquina e tesoura, acabamento na navalha e finalização. Degradê, social, americano ou o seu de sempre.</span>
+      </h3>
+    </article>
+    <article class="item reveal">
+      <span class="item__num">02</span>
+      <h3 class="item__nome">Barba
+        <span class="item__desc">Toalha quente, óleo, navalha e balm. Desenho no contorno pra segurar a linha por semanas.</span>
+      </h3>
+    </article>
+    <article class="item reveal">
+      <span class="item__num">03</span>
+      <h3 class="item__nome">Corte + barba
+        <span class="item__desc">O combo da casa. Sai daqui com cabelo e barba conversando entre si.</span>
+      </h3>
+    </article>
+    <article class="item reveal">
+      <span class="item__num">04</span>
+      <h3 class="item__nome">Kids
+        <span class="item__desc">No carrinho, no tempo da criança. Primeira vez ganha registro da mecha.</span>
+      </h3>
+    </article>
+  </div>
+</section>
+
+<!-- ══════════ A CASA ══════════ -->
+<section class="casa" data-territorio="lyus">
+  <div class="casa__trilho" data-fita-trilho>
+    <div class="casa__grude">
+      <div class="casa__fita" data-fita>
+        <div class="casa__intro">
+          <p class="eyebrow">Rua adentro</p>
+          <h2>A casa</h2>
+          <p>Tijolo à vista, luz em zigue-zague no teto e uma porta de Kombi lixada na parede. O lugar é parte do corte.</p>
+        </div>
+        <figure class="quadro">
+          <img src="assets/fachada.jpg" alt="Fachada da Barbearia LYU'S com bandeira amarela na calçada" loading="lazy">
+          <figcaption class="quadro__tag"><b>A esquina</b>Bandeira amarela, você não erra</figcaption>
+        </figure>
+        <figure class="quadro">
+          <img src="assets/salao.jpg" alt="Salão com cadeiras pretas e parede de tijolo" loading="lazy">
+          <figcaption class="quadro__tag"><b>O salão</b>Três cadeiras, espelho de ponta a ponta</figcaption>
+        </figure>
+        <figure class="quadro">
+          <img src="assets/porta-kombi.jpg" alt="Porta de Kombi em madeira com o logo da barbearia" loading="lazy">
+          <figcaption class="quadro__tag"><b>A porta</b>Madeira lixada à mão, logo queimado</figcaption>
+        </figure>
+        <figure class="quadro">
+          <img src="assets/kids.jpg" alt="Carrinho infantil usado como cadeira para crianças" loading="lazy">
+          <figcaption class="quadro__tag"><b>A cadeira kids</b>Farol aceso, corte sem choro</figcaption>
+        </figure>
+        <figure class="quadro">
+          <img src="assets/equipe.jpg" alt="Barbeiros atendendo clientes no salão" loading="lazy">
+          <figcaption class="quadro__tag"><b>Movimento</b>Todas as cadeiras ocupadas</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ O V ══════════ -->
+<section class="ov" data-territorio="lyus">
+  <div class="ov__trilho" data-v-trilho>
+    <div class="ov__grude">
+      <div class="ov__fundo"></div>
+      <div class="ov__recorte" data-v-recorte>
+        <img src="assets/tesoura.jpg" alt="Barbeiro segurando tesoura em frente ao rosto">
+      </div>
+      <div class="ov__texto">
+        <h2>Mão que corta<br>tem nome</h2>
+        <p>Aqui ninguém é encaixado no primeiro que estiver livre. Você escolhe o barbeiro, ele lembra do seu cabelo — e a conversa continua de onde parou.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="trilho" data-trilho>
+  <svg viewBox="0 0 1200 60" preserveAspectRatio="none" aria-hidden="true">
+    <polyline points="0,46 100,14 200,46 300,14 400,46 500,14 600,46 700,14 800,46 900,14 1000,46 1100,14 1200,46"/>
+  </svg>
+</div>
+
+<!-- ══════════ PORTAL → ACADEMY ══════════ -->
+<section class="portal" id="academy" data-territorio="academy">
+  <div class="portal__fundo">
+    <video src="assets/academy.mp4" poster="assets/academy-poster.jpg" autoplay muted loop playsinline></video>
+  </div>
+  <div class="portal__conteudo">
+    <img class="portal__selo reveal" src="assets/unisingle-selo.png" alt="" aria-hidden="true">
+    <img class="portal__marca reveal" data-delay="1" src="assets/unisingle-logo.png" alt="Unisingle Academy — academia de barbeiros">
+    <p class="eyebrow reveal" data-delay="2">A cadeira do outro lado</p>
+    <h2 class="portal__titulo reveal" data-delay="2">Aqui também<br>se forma barbeiro</h2>
+    <p class="reveal" data-delay="3">A Unisingle® Academy é a frente de formação da casa. Mesma bancada, outro objetivo: sair daqui com profissão.</p>
+  </div>
+</section>
+
+<!-- ══════════ QUEM SOMOS ══════════ -->
+<section class="bloco" data-territorio="academy">
+  <div class="bloco__grade">
+    <div class="bloco__foto reveal">
+      <img src="assets/unisingle-equipe.jpg" alt="Equipe da Unisingle Academy" loading="lazy">
+    </div>
+    <div>
+      <p class="eyebrow reveal">Quem somos</p>
+      <h2 class="reveal" data-delay="1">Formamos com singularidade</h2>
+      <p class="reveal" data-delay="1">A Unisingle® Academy é uma academia de barbeiros criada para formar profissionais autênticos, preparados para construir uma carreira sólida através da técnica, do caráter e do propósito.</p>
+      <p class="reveal" data-delay="2">Acreditamos que cada barbeiro possui uma identidade única e que o verdadeiro sucesso acontece quando talento, conhecimento e propósito caminham juntos.</p>
+      <p class="reveal" data-delay="3">Mais do que ensinar uma profissão, desenvolvemos pessoas capazes de gerar valor, impactar vidas e construir seu próprio legado.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ MISSÃO E VISÃO ══════════ -->
+<div class="par" data-territorio="academy">
+  <article class="cartao reveal">
+    <p class="eyebrow">Missão</p>
+    <h3>O que fazemos</h3>
+    <p>Formar barbeiros autênticos, preparados técnica e emocionalmente para prosperar na profissão, desenvolver sua identidade e construir um legado através do seu trabalho.</p>
+  </article>
+  <article class="cartao reveal" data-delay="1">
+    <p class="eyebrow">Visão</p>
+    <h3>Onde queremos chegar</h3>
+    <p>Ser referência em formação de barbeiros no Brasil, reconhecida por desenvolver profissionais de excelência, com propósito, autenticidade e capacidade de transformar vidas através da profissão.</p>
+  </article>
+</div>
+
+<!-- ══════════ VALORES ══════════ -->
+<section class="valores" data-territorio="academy">
+  <p class="eyebrow reveal">Valores</p>
+  <h2 class="servicos__titulo reveal" data-delay="1">Oito princípios</h2>
+  <div class="valores__grade">
+    <article class="valor reveal"><span class="valor__n">01</span><h3>Deus</h3><p>Reconhecemos que nosso propósito nasce de princípios maiores que nós mesmos.</p></article>
+    <article class="valor reveal"><span class="valor__n">02</span><h3>Propósito</h3><p>Tudo o que fazemos possui uma razão clara e uma direção definida.</p></article>
+    <article class="valor reveal"><span class="valor__n">03</span><h3>Caráter</h3><p>O talento abre portas, mas é o caráter que sustenta uma carreira.</p></article>
+    <article class="valor reveal"><span class="valor__n">04</span><h3>Autenticidade</h3><p>Valorizamos a identidade única de cada profissional.</p></article>
+    <article class="valor reveal"><span class="valor__n">05</span><h3>Excelência</h3><p>Buscamos evolução constante em cada detalhe.</p></article>
+    <article class="valor reveal"><span class="valor__n">06</span><h3>Disciplina</h3><p>O sucesso é resultado da consistência diária.</p></article>
+    <article class="valor reveal"><span class="valor__n">07</span><h3>Evolução</h3><p>Nunca paramos de aprender, crescer e melhorar.</p></article>
+    <article class="valor reveal"><span class="valor__n">08</span><h3>Legado</h3><p>Formamos profissionais que impactam pessoas e inspiram futuras gerações.</p></article>
+  </div>
+</section>
+
+<!-- ══════════ MANIFESTO ACADEMY ══════════ -->
+<section class="credo" data-territorio="academy">
+  <div class="credo__trilho" data-credo-trilho>
+    <div class="credo__grude">
+      <div class="credo__caixa">
+        <p class="eyebrow reveal">Manifesto</p>
+        <h2 class="credo__texto" data-credo>
+          Nós acreditamos que a barbearia vai muito além de cabelo e barba. Cada cliente que senta em uma cadeira procura mais do que um serviço.
+        </h2>
+        <div class="credo__tres">
+          <div data-tres>Procura confiança</div>
+          <div data-tres>Procura identidade</div>
+          <div data-tres>Procura pertencimento</div>
+        </div>
+        <p class="credo__fecho reveal">Por isso não formamos apenas barbeiros. Formamos profissionais capazes de transformar sua realidade, gerar prosperidade para suas famílias e impactar a vida das pessoas através do seu trabalho. <b>Nossa missão não é criar cópias — é revelar identidades.</b> Porque quando um profissional descobre quem ele é, deixa de competir por preço e passa a construir valor.</p>
+        <p class="reveal" style="margin-top:26px">
+          <!-- [TROCAR] leve para a página ou WhatsApp das turmas -->
+          <a class="btn btn--linha" href="https://wa.me/5544998306449" target="_blank" rel="noopener">Falar sobre as turmas</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="trilho" data-trilho>
+  <svg viewBox="0 0 1200 60" preserveAspectRatio="none" aria-hidden="true">
+    <polyline points="0,46 100,14 200,46 300,14 400,46 500,14 600,46 700,14 800,46 900,14 1000,46 1100,14 1200,46"/>
+  </svg>
+</div>
+
+<!-- ══════════ PORTAL → LÓBBUS ══════════ -->
+<section class="portal" id="lobbus" data-territorio="lobbus">
+  <div class="portal__fundo">
+    <video src="assets/lobbus.mp4" poster="assets/lobbus-poster.jpg" autoplay muted loop playsinline></video>
+  </div>
+  <div class="portal__conteudo">
+    <img class="lobbus__lobo reveal" src="assets/lobbus-logo.png" alt="Lóbbus">
+    <p class="eyebrow reveal" data-delay="1">A linha da casa</p>
+    <h2 class="portal__titulo reveal" data-delay="2">O que fica<br>depois do corte</h2>
+  </div>
+</section>
+
+<section class="lobbus" data-territorio="lobbus">
+  <div class="lobbus__grade">
+    <div class="reveal">
+      <p class="eyebrow">Lóbbus®</p>
+      <h2>Produto de barbeiro,<br>feito por barbeiro</h2>
+    </div>
+    <div>
+      <p class="reveal">A Lóbbus nasceu da bancada: o que a equipe usa no dia a dia virou linha própria. Nada entra no catálogo antes de passar semanas em uso real nas três cadeiras.</p>
+      <!-- [TROCAR] descreva a linha real de produtos -->
+      <div class="lobbus__tags reveal" data-delay="1">
+        <span>Pomada</span><span>Óleo de barba</span><span>Balm</span><span>Shampoo</span><span>Finalizador</span>
+      </div>
+      <p class="reveal" data-delay="2"><a class="btn btn--linha" href="https://wa.me/5544998306449" target="_blank" rel="noopener">Ver a linha</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FUNDADORES ══════════ -->
+<section class="casal" data-territorio="lyus">
+  <div class="casal__foto reveal">
+    <img src="assets/fundadores.jpg" alt="Casal fundador" loading="lazy">
+  </div>
+  <div>
+    <p class="eyebrow reveal">Quem abriu a porta</p>
+    <h2 class="reveal" data-delay="1">Começou com uma cadeira</h2>
+    <p class="reveal" data-delay="1">Em 2017 era uma cadeira, um espelho e a agenda no caderno. A régua nunca mudou: atender bem quem senta, lembrar do nome de quem volta.</p>
+    <p class="reveal" data-delay="2">De lá pra cá a barbearia virou três frentes — a cadeira, a sala de aula e a bancada de produto. Tudo tocado pelas mesmas duas pessoas.</p>
+  </div>
+</section>
+
+<!-- ══════════ VISITA ══════════ -->
+<footer class="visita" id="visita" data-territorio="lyus">
+  <div class="visita__grade">
+    <div class="visita__chamada">
+      <p class="eyebrow reveal">Sua vez</p>
+      <h2 class="reveal" data-delay="1">Senta<br><em>na cadeira</em></h2>
+      <a class="btn reveal" data-delay="2" href="https://wa.me/5544998306449" target="_blank" rel="noopener">Agendar pelo WhatsApp</a>
+    </div>
+    <div class="dados">
+      <div class="dado reveal">
+        <h3>Onde</h3>
+        <p>R. Pernambuco, 392<br>Colorado — PR<br><span>86690-000</span></p>
+        <p><a href="https://www.google.com/maps/search/?api=1&query=R.+Pernambuco+392+Colorado+PR+86690-000" target="_blank" rel="noopener">Abrir no mapa</a></p>
+      </div>
+      <div class="dado reveal" data-delay="1">
+        <h3>Horários</h3>
+        <!-- [TROCAR] horários reais -->
+        <p>Ter a sex <span>· 9h às 19h</span><br>Sábado <span>· 8h às 18h</span><br>Dom e seg <span>· fechado</span></p>
+      </div>
+      <div class="dado reveal" data-delay="2">
+        <h3>Contato</h3>
+        <p><a href="https://wa.me/5544998306449" target="_blank" rel="noopener">(44) 99830-6449</a></p>
+        <!-- [TROCAR] @ do Instagram -->
+        <p><a href="https://instagram.com/" target="_blank" rel="noopener">Instagram</a></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="rodape">
+    <div class="rodape__marcas">
+      <img src="assets/logo-amarelo.png" alt="Barbearia LYU'S">
+      <img src="assets/unisingle-logo.png" alt="Unisingle Academy">
+      <img src="assets/lobbus-logo.png" alt="Lóbbus">
+    </div>
+    <span>Colorado · PR — desde 2017</span>
+  </div>
+</footer>
+
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+(function(){
+  "use strict";
+  var reduz = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var estreito = function(){ return window.innerWidth < 720; };
+
+  /* ── scroll suave (degrada sem o CDN) ── */
+  var lenis = null;
+  if(!reduz && window.Lenis){
+    lenis = new window.Lenis({ duration:1.15, smoothWheel:true, touchMultiplier:1.6 });
+    (function raf(t){ lenis.raf(t); requestAnimationFrame(raf); })();
+    document.querySelectorAll('a[href^="#"]').forEach(function(a){
+      a.addEventListener("click", function(e){
+        var alvo = document.querySelector(a.getAttribute("href"));
+        if(alvo){ e.preventDefault(); lenis.scrollTo(alvo); }
+      });
+    });
+  }
+
+  /* ── reveals ── */
+  var obs = new IntersectionObserver(function(ent){
+    ent.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add("is-in"); obs.unobserve(e.target); }
+    });
+  }, { threshold:.15, rootMargin:"0px 0px -8% 0px" });
+  document.querySelectorAll(".reveal, [data-trilho], [data-tres]").forEach(function(el){ obs.observe(el); });
+
+  /* ── troca de território: muda o acento da página ── */
+  var links = document.querySelectorAll(".nav__meio a[data-link]");
+  var terrObs = new IntersectionObserver(function(ent){
+    ent.forEach(function(e){
+      if(!e.isIntersecting) return;
+      var t = e.target.getAttribute("data-territorio");
+      document.body.className = "t-" + t;
+      links.forEach(function(a){ a.classList.toggle("ativo", a.getAttribute("data-link") === t); });
+    });
+  }, { threshold:0, rootMargin:"-45% 0px -45% 0px" });
+  document.querySelectorAll("[data-territorio]").forEach(function(el){ terrObs.observe(el); });
+
+  /* ── quebra texto em palavras acendíveis ── */
+  function fatiar(el, destaques){
+    if(!el) return [];
+    var out = [];
+    el.textContent.trim().split(/\s+/).forEach(function(p){
+      var s = document.createElement("span");
+      var limpo = p.toLowerCase().replace(/[.,—]/g,"");
+      s.className = "p" + (destaques.indexOf(limpo) > -1 ? " destaque" : "");
+      s.textContent = p;
+      el.appendChild(s);
+      out.push(s);
+    });
+    el.removeChild(el.firstChild);
+    return out;
+  }
+  var elManif = document.querySelector("[data-palavras]");
+  var elCredo = document.querySelector("[data-credo]");
+  var pManif = fatiar(elManif, ["navalha","espelho","aprovar"]);
+  var pCredo = fatiar(elCredo, ["cabelo","barba","serviço"]);
+
+  function acende(el, lista){
+    if(!el || !lista.length) return;
+    var r = el.getBoundingClientRect();
+    var p = Math.min(1, Math.max(0, (window.innerHeight * 0.82 - r.top) / (r.height * 0.85 || 1)));
+    var corte = Math.floor(p * lista.length);
+    for(var i = 0; i < lista.length; i++){ lista[i].classList.toggle("on", i < corte); }
+  }
+
+  function progresso(el){
+    var r = el.getBoundingClientRect();
+    return Math.min(1, Math.max(0, -r.top / (r.height - window.innerHeight || 1)));
+  }
+
+  var heroMidia  = document.querySelector("[data-parallax]");
+  var heroTexto  = document.querySelector("[data-fade-hero]");
+  var nav        = document.getElementById("nav");
+  var fitaTrilho = document.querySelector("[data-fita-trilho]");
+  var fita       = document.querySelector("[data-fita]");
+  var vTrilho    = document.querySelector("[data-v-trilho]");
+  var vRecorte   = document.querySelector("[data-v-recorte]");
+  var travado    = false;
+
+  function pinta(){
+    var y = window.scrollY || window.pageYOffset;
+    if(nav) nav.classList.toggle("solto", y > 80);
+
+    if(!reduz){
+      var vh = window.innerHeight;
+      var ph = Math.min(1, y / vh);
+      if(heroMidia) heroMidia.style.transform = "translate3d(0," + (ph*vh*0.28) + "px,0) scale(" + (1+ph*0.08) + ")";
+      if(heroTexto){
+        heroTexto.style.transform = "translate3d(0," + (-ph*90) + "px,0)";
+        heroTexto.style.opacity = String(Math.max(0, 1-ph*1.5));
+      }
+      acende(elManif, pManif);
+      acende(elCredo, pCredo);
+
+      if(fitaTrilho && fita && !estreito()){
+        var corrida = fita.scrollWidth - window.innerWidth;
+        if(corrida > 0) fita.style.transform = "translate3d(" + (-progresso(fitaTrilho)*corrida) + "px,0,0)";
+      }
+      if(vTrilho && vRecorte){
+        vRecorte.style.transform = "scale(" + (0.55 + progresso(vTrilho)*1.25) + ")";
+      }
+    }
+    travado = false;
+  }
+
+  function aoRolar(){ if(!travado){ travado = true; requestAnimationFrame(pinta); } }
+  if(lenis) lenis.on("scroll", aoRolar);
+  window.addEventListener("scroll", aoRolar, { passive:true });
+  window.addEventListener("resize", aoRolar);
+  pinta();
+})();
+</script>
+</body>
+</html>

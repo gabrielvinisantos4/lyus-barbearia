@@ -9,6 +9,81 @@
   "use strict";
   var reduz = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  function initPremiumGallery(){
+    var cards = document.querySelectorAll(".galeria--premium .gallery-card");
+    if(!cards.length) return;
+
+    if(window.gsap && window.ScrollTrigger){
+      window.gsap.registerPlugin(window.ScrollTrigger);
+
+      cards.forEach(function(card, index){
+        window.gsap.fromTo(card, {
+          opacity: 0,
+          y: 42,
+          scale: 0.94,
+          filter: "blur(16px)"
+        }, {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          filter: "blur(0px)",
+          duration: 0.9,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: card,
+            start: "top 88%",
+            once: true
+          },
+          delay: index * 0.08
+        });
+      });
+    }
+
+    cards.forEach(function(card){
+      var img = card.querySelector("img");
+      if(!img) return;
+      card.addEventListener("mousemove", function(e){
+        if(reduz) return;
+        var rect = card.getBoundingClientRect();
+        var x = (e.clientX - rect.left) / rect.width - 0.5;
+        var y = (e.clientY - rect.top) / rect.height - 0.5;
+        card.style.transform = "translate3d(0,0,0) rotateX(" + (-y * 4).toFixed(2) + "deg) rotateY(" + (x * 7).toFixed(2) + "deg)";
+      });
+      card.addEventListener("mouseleave", function(){
+        card.style.transform = "";
+      });
+    });
+
+    var viewer = document.getElementById("viewer");
+    var viewerImg = viewer ? viewer.querySelector(".viewer__img") : null;
+    var viewerClose = viewer ? viewer.querySelector(".viewer__close") : null;
+    var openers = document.querySelectorAll(".gallery-open");
+
+    function openViewer(src){
+      if(!viewer || !viewerImg) return;
+      viewerImg.src = src;
+      viewer.classList.add("is-open");
+      viewer.setAttribute("aria-hidden", "false");
+    }
+    function closeViewer(){
+      if(!viewer) return;
+      viewer.classList.remove("is-open");
+      viewer.setAttribute("aria-hidden", "true");
+    }
+
+    openers.forEach(function(opener){
+      opener.addEventListener("click", function(){
+        openViewer(opener.dataset.full || opener.getAttribute("src"));
+      });
+    });
+
+    if(viewerClose){ viewerClose.addEventListener("click", closeViewer); }
+    if(viewer){ viewer.addEventListener("click", function(e){ if(e.target === viewer) closeViewer(); }); }
+    document.addEventListener("keydown", function(e){ if(e.key === "Escape") closeViewer(); });
+  }
+
+  initPremiumGallery();
+
   /* ── scroll suave (degrada sozinho se o CDN não carregar) ── */
   var lenis = null;
   if(!reduz && window.Lenis){

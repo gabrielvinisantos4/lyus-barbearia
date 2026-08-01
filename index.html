@@ -20,6 +20,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/header.css">
 
 <style>
 /* acento animável entre os três territórios */
@@ -67,38 +68,6 @@ a{color:inherit;text-decoration:none}
 .reveal[data-delay="1"]{transition-delay:.1s}
 .reveal[data-delay="2"]{transition-delay:.2s}
 .reveal[data-delay="3"]{transition-delay:.3s}
-
-/* ── nav ──────────────────────────────────────────── */
-.nav{
-  position:fixed;inset:0 0 auto 0;z-index:60;
-  display:flex;align-items:center;justify-content:space-between;gap:16px;
-  padding:13px var(--pad);border-bottom:1px solid transparent;
-  transition:background .4s ease,backdrop-filter .4s ease,border-color .4s ease;
-}
-.nav.solto{background:rgba(10,10,10,.86);backdrop-filter:blur(14px);border-bottom-color:var(--linha)}
-.nav__logo{height:32px;width:auto}
-.nav a:has(.nav__logo){display:flex;align-items:center;min-height:44px;padding:6px 0}
-.nav__meio{display:none;gap:26px}
-.nav__meio a{
-  font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--fumaca);transition:color .3s ease;position:relative;padding-bottom:3px;
-}
-.nav__meio a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:1px;background:var(--acento);transition:right .35s cubic-bezier(.16,1,.3,1)}
-.nav__meio a:hover{color:var(--osso)}
-.nav__meio a:hover::after,.nav__meio a.ativo::after{right:0}
-.nav__meio a.ativo{color:var(--osso)}
-
-.btn{
-  display:inline-flex;align-items:center;gap:8px;
-  background:var(--acento);color:#0A0A0A;
-  font-family:var(--mono);font-weight:700;font-size:11px;
-  letter-spacing:.16em;text-transform:uppercase;
-  padding:11px 18px;border-radius:2px;
-  transition:transform .25s ease,box-shadow .25s ease,background .8s ease;
-}
-.btn:hover{transform:translateY(-2px);box-shadow:0 8px 26px rgba(255,255,255,.14)}
-.btn--linha{background:transparent;color:var(--acento);border:1px solid var(--acento)}
-.btn--linha:hover{background:var(--acento);color:#0A0A0A}
 
 /* ══ HERO ═════════════════════════════════════════ */
 .hero{position:relative;height:100svh;min-height:580px;overflow:hidden}
@@ -167,13 +136,22 @@ a{color:inherit;text-decoration:none}
 .servicos__titulo{font-family:var(--display);text-transform:uppercase;font-size:clamp(30px,5vw,58px);line-height:.95;margin-top:14px}
 .lista{max-width:1240px;margin:0 auto;border-top:1px solid var(--linha)}
 .item{
-  display:grid;grid-template-columns:38px 1fr;gap:18px;align-items:start;
+  display:grid;grid-template-columns:38px 1fr auto;gap:18px;align-items:start;
+  cursor:pointer;color:inherit;text-decoration:none;
+  transform-origin:left center;
   padding:clamp(22px,3.2vw,32px) 0;border-bottom:1px solid var(--linha);
   position:relative;transition:padding-left .4s cubic-bezier(.16,1,.3,1);
 }
 .item::before{content:"";position:absolute;left:0;top:0;bottom:0;width:0;background:var(--acento);opacity:.06;transition:width .5s cubic-bezier(.16,1,.3,1)}
-.item:hover::before{width:100%}
-.item:hover{padding-left:14px}
+.item:hover::before,.item:focus-visible::before{width:100%}
+.item:hover,.item:focus-visible{padding-left:14px;transform:scale(1.012)}
+.item:active{transform:scale(.995);transition-duration:.09s}
+.item__seta{
+  align-self:center;color:var(--acento);font-family:var(--mono);font-size:20px;line-height:1;
+  opacity:0;transform:translateX(-10px);
+  transition:opacity .45s cubic-bezier(.16,1,.3,1),transform .45s cubic-bezier(.16,1,.3,1);
+}
+.item:hover .item__seta,.item:focus-visible .item__seta{opacity:1;transform:none}
 .item__num{font-family:var(--mono);font-size:11px;color:var(--acento);letter-spacing:.1em;padding-top:6px}
 .item__nome{font-family:var(--display);text-transform:uppercase;font-size:clamp(21px,3.4vw,38px);line-height:1;letter-spacing:-.015em}
 .item__desc{display:block;font-family:var(--corpo);text-transform:none;font-size:14px;letter-spacing:0;color:var(--fumaca);margin-top:10px;max-width:52ch;font-weight:400;line-height:1.6}
@@ -305,6 +283,7 @@ a{color:inherit;text-decoration:none}
   font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--fumaca);
 }
 .rodape__marcas{display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+.rodape__marcas a{display:inline-flex;align-items:center;min-height:44px}
 .rodape__marcas img{height:24px;width:auto;opacity:.6;transition:opacity .3s ease}
 .rodape__marcas img:hover{opacity:1}
 
@@ -336,14 +315,13 @@ a{color:inherit;text-decoration:none}
 
 /* ══ ajustes de toque e leitura (qualquer tela de dedo) ══ */
 @media (max-width:719px), (hover:none){
-  .btn{padding:15px 22px;font-size:12px}
-  .nav{padding:10px var(--pad)}
-  .nav .btn{padding:13px 16px}
   .eyebrow{font-size:12px}
   .quadro__tag{font-size:12px;padding:18px;line-height:1.5}
   .lobbus__tags span{font-size:12px;padding:10px 15px}
   .rodape{font-size:12px}
   .valor__n,.item__num{font-size:12px}
+  .item__seta{opacity:.65;transform:none;font-size:18px}
+  .item:hover{transform:none}
   .hero__grupo{font-size:12px}
   .quadro__tag b{font-size:12px}
   .hero__desce{font-size:10px}
@@ -351,6 +329,15 @@ a{color:inherit;text-decoration:none}
   .dado a{display:inline-block;padding:11px 0;min-height:44px}
   .dado p{line-height:1.8}
 }
+/* botões: lado a lado a partir de 560px, empilhados abaixo */
+@media (max-width:559px){
+  .botoes{flex-direction:column;align-items:stretch}
+  .botoes .btn{width:100%}
+}
+@media (min-width:560px){
+  .botoes .btn{flex:0 1 auto}
+}
+
 @media (prefers-reduced-motion:reduce){
   *{animation-duration:.001ms!important;transition-duration:.001ms!important}
   .reveal{opacity:1;transform:none}
@@ -377,15 +364,40 @@ a{color:inherit;text-decoration:none}
 </svg>
 
 <header class="nav" id="nav">
-  <a href="#topo" aria-label="Barbearia LYU'S — início"><img class="nav__logo" src="assets/logo-amarelo.png" alt="Barbearia LYU'S"></a>
-  <nav class="nav__meio">
-    <a href="#barbearia" data-link="lyus">Barbearia</a>
-    <a href="#academy" data-link="academy">Academy</a>
-    <a href="#lobbus" data-link="lobbus">Lóbbus</a>
-    <a href="#visita">Visita</a>
+  <a class="nav__marca" href="#topo" aria-label="Barbearia LYU'S — início">
+    <img class="nav__logo" src="assets/logo-amarelo.png" alt="Barbearia LYU'S">
+  </a>
+
+  <nav class="nav__meio" aria-label="Navegação principal">
+    <a href="#topo" data-link="lyus">Barbearia</a>
+    <a href="academy/curso/index.html" data-link="academy">Academy</a>
+    <a href="lobbus/produtos/index.html" data-link="lobbus">Lóbbus</a>
+    <a href="#visita" data-link="visita">Visita</a>
   </nav>
-  <a class="btn" href="https://wa.me/5544998306449" target="_blank" rel="noopener">Agendar</a>
+
+  <div class="nav__acoes">
+    <a class="btn" href="https://cashbarber.com.br/barbearialyus/inicio" target="_blank" rel="noopener">Agendar pelo App</a>
+    <a class="btn" href="https://wa.me/5544998306449" target="_blank" rel="noopener">Agendar pelo WhatsApp</a>
+  </div>
+
+  <button class="nav__abre" type="button" aria-expanded="false" aria-controls="painel" aria-label="Abrir menu">
+    <span></span><span></span><span></span>
+  </button>
 </header>
+
+<div class="painel" id="painel">
+  <nav class="painel__links" aria-label="Navegação">
+      <a href="#topo" data-link="lyus">Barbearia</a>
+      <a href="academy/curso/index.html" data-link="academy">Academy</a>
+      <a href="lobbus/produtos/index.html" data-link="lobbus">Lóbbus</a>
+      <a href="#visita" data-link="visita">Visita</a>
+  </nav>
+  <div class="painel__acoes">
+    <a class="btn" href="https://cashbarber.com.br/barbearialyus/inicio" target="_blank" rel="noopener">Agendar pelo App</a>
+    <a class="btn" href="https://wa.me/5544998306449" target="_blank" rel="noopener">Agendar pelo WhatsApp</a>
+  </div>
+  <p class="painel__rodape">Colorado · PR — desde 2017</p>
+</div>
 
 <!-- ══════════ HERO ══════════ -->
 <section class="hero" id="topo" data-territorio="lyus">
@@ -434,30 +446,34 @@ a{color:inherit;text-decoration:none}
     <h2 class="servicos__titulo reveal" data-delay="1">Serviços</h2>
   </div>
   <div class="lista">
-    <article class="item reveal">
+    <a class="item reveal" href="https://cashbarber.com.br/barbearialyus/inicio" target="_blank" rel="noopener">
       <span class="item__num">01</span>
       <h3 class="item__nome">Corte
         <span class="item__desc">Máquina e tesoura, acabamento na navalha e finalização. Degradê, social, americano ou o seu de sempre.</span>
       </h3>
-    </article>
-    <article class="item reveal">
+      <span class="item__seta" aria-hidden="true">&#8594;</span>
+    </a>
+    <a class="item reveal" href="https://cashbarber.com.br/barbearialyus/inicio" target="_blank" rel="noopener">
       <span class="item__num">02</span>
       <h3 class="item__nome">Barba
         <span class="item__desc">Toalha quente, óleo, navalha e balm. Desenho no contorno pra segurar a linha por semanas.</span>
       </h3>
-    </article>
-    <article class="item reveal">
+      <span class="item__seta" aria-hidden="true">&#8594;</span>
+    </a>
+    <a class="item reveal" href="https://cashbarber.com.br/barbearialyus/inicio" target="_blank" rel="noopener">
       <span class="item__num">03</span>
       <h3 class="item__nome">Corte + barba
         <span class="item__desc">O combo da casa. Sai daqui com cabelo e barba conversando entre si.</span>
       </h3>
-    </article>
-    <article class="item reveal">
+      <span class="item__seta" aria-hidden="true">&#8594;</span>
+    </a>
+    <a class="item reveal" href="https://cashbarber.com.br/barbearialyus/inicio" target="_blank" rel="noopener">
       <span class="item__num">04</span>
       <h3 class="item__nome">Kids
         <span class="item__desc">No carrinho, no tempo da criança. Primeira vez ganha registro da mecha.</span>
       </h3>
-    </article>
+      <span class="item__seta" aria-hidden="true">&#8594;</span>
+    </a>
   </div>
 </section>
 
@@ -595,7 +611,7 @@ a{color:inherit;text-decoration:none}
         <p class="credo__fecho reveal">Por isso não formamos apenas barbeiros. Formamos profissionais capazes de transformar sua realidade, gerar prosperidade para suas famílias e impactar a vida das pessoas através do seu trabalho. <b>Nossa missão não é criar cópias — é revelar identidades.</b> Porque quando um profissional descobre quem ele é, deixa de competir por preço e passa a construir valor.</p>
         <p class="reveal" style="margin-top:26px">
           <!-- [TROCAR] leve para a página ou WhatsApp das turmas -->
-          <a class="btn btn--linha" href="https://wa.me/5544998306449" target="_blank" rel="noopener">Falar sobre as turmas</a>
+          <a class="btn btn--linha" href="academy/curso/index.html">Falar sobre as turmas</a>
         </p>
       </div>
     </div>
@@ -632,7 +648,7 @@ a{color:inherit;text-decoration:none}
       <div class="lobbus__tags reveal" data-delay="1">
         <span>Pomada</span><span>Óleo de barba</span><span>Balm</span><span>Shampoo</span><span>Finalizador</span>
       </div>
-      <p class="reveal" data-delay="2"><a class="btn btn--linha" href="https://wa.me/5544998306449" target="_blank" rel="noopener">Ver a linha</a></p>
+      <p class="reveal" data-delay="2"><a class="btn btn--linha" href="lobbus/produtos/index.html">Ver a linha</a></p>
     </div>
   </div>
 </section>
@@ -656,7 +672,10 @@ a{color:inherit;text-decoration:none}
     <div class="visita__chamada">
       <p class="eyebrow reveal">Sua vez</p>
       <h2 class="reveal" data-delay="1">Senta<br><em>na cadeira</em></h2>
-      <a class="btn reveal" data-delay="2" href="https://wa.me/5544998306449" target="_blank" rel="noopener">Agendar pelo WhatsApp</a>
+      <div class="botoes reveal" data-delay="2">
+        <a class="btn" href="https://cashbarber.com.br/barbearialyus/inicio" target="_blank" rel="noopener">Agendar pelo App</a>
+        <a class="btn" href="https://wa.me/5544998306449" target="_blank" rel="noopener">Agendar pelo WhatsApp</a>
+      </div>
     </div>
     <div class="dados">
       <div class="dado reveal">
@@ -689,6 +708,7 @@ a{color:inherit;text-decoration:none}
 </footer>
 
 <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="assets/header.js"></script>
 <script>
 (function(){
   "use strict";
@@ -717,7 +737,7 @@ a{color:inherit;text-decoration:none}
   document.querySelectorAll(".reveal, [data-trilho], [data-tres]").forEach(function(el){ obs.observe(el); });
 
   /* ── troca de território: muda o acento da página ── */
-  var links = document.querySelectorAll(".nav__meio a[data-link]");
+  var links = document.querySelectorAll("[data-link]");
   var terrObs = new IntersectionObserver(function(ent){
     ent.forEach(function(e){
       if(!e.isIntersecting) return;
@@ -763,7 +783,6 @@ a{color:inherit;text-decoration:none}
 
   var heroMidia  = document.querySelector("[data-parallax]");
   var heroTexto  = document.querySelector("[data-fade-hero]");
-  var nav        = document.getElementById("nav");
   var fitaTrilho = document.querySelector("[data-fita-trilho]");
   var fita       = document.querySelector("[data-fita]");
   var vTrilho    = document.querySelector("[data-v-trilho]");
@@ -772,7 +791,6 @@ a{color:inherit;text-decoration:none}
 
   function pinta(){
     var y = window.scrollY || window.pageYOffset;
-    if(nav) nav.classList.toggle("solto", y > 80);
 
     if(!reduz){
       var vh = window.innerHeight;

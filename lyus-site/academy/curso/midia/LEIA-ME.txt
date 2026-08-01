@@ -1,0 +1,23 @@
+COMO PUBLICAR AS FOTOS E VÍDEOS DO CURSO
+
+Salve os arquivos NESTA pasta, com exatamente estes nomes.
+Não é preciso alterar nenhum código.
+
+  capa.mp4              vídeo de fundo do topo (vertical, 8 a 12s, sem áudio)
+  capa-poster.jpg       imagem que aparece antes do vídeo carregar
+
+  estrutura-1.jpg       fotos da academia
+  estrutura-2.jpg
+  estrutura-3.jpg
+  estrutura-4.jpg
+
+  aluno-1.jpg           fotos de alunos formados
+  aluno-2.jpg
+  aluno-3.jpg
+
+Enquanto o arquivo não existir, o espaço na página mostra
+um aviso com o nome esperado. Assim que o arquivo for salvo
+aqui, ele aparece sozinho.
+
+DICA: exporte as fotos com no máximo 1000px de largura para
+o site continuar leve.

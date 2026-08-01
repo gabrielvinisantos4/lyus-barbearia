@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Formação de Barbeiros — Unisingle Academy</title>
+<meta name="description" content="Formação de barbeiros da Unisingle Academy, em Colorado, PR. Técnica, caráter e propósito para construir uma carreira sólida.">
+<meta name="theme-color" content="#0A0A0A">
+
+<!--
+  ═══════════════════════════════════════════════════════════
+  COMO COLOCAR OS VÍDEOS E FOTOS
+
+  Você NÃO precisa mexer neste arquivo para publicar mídia.
+  Basta salvar os arquivos na pasta  midia/  com estes nomes:
+
+    capa.mp4              vídeo de fundo do topo da página
+    capa-poster.jpg       imagem que aparece antes do vídeo carregar
+    estrutura-1.jpg  …  estrutura-4.jpg    fotos da academia
+    aluno-1.jpg  …  aluno-3.jpg            fotos de formados
+    instrutor.jpg         foto de quem ensina
+
+  Enquanto o arquivo não existir, o espaço mostra um aviso
+  com o nome esperado. Assim que você salvar o arquivo certo,
+  ele aparece sozinho.
+
+  Textos a revisar estão marcados com  [TROCAR]
+  ═══════════════════════════════════════════════════════════
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/header.css">
+<link rel="stylesheet" href="../../assets/base.css">
+
+<style>
+/* específico desta página */
+.selo-topo{width:clamp(88px,12vw,132px);margin-bottom:20px;filter:drop-shadow(0 10px 40px rgba(0,0,0,.7))}
+.numeros{display:grid;gap:1px;background:var(--linha);border:1px solid var(--linha);margin-top:clamp(30px,4vw,50px);grid-template-columns:1fr 1fr}
+.numero{background:var(--preto);padding:clamp(22px,3vw,34px)}
+.numero b{display:block;font-family:var(--display);font-size:clamp(26px,4.4vw,50px);color:var(--acento);line-height:1;letter-spacing:-.02em}
+.numero span{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--fumaca);margin-top:10px}
+.depos{display:grid;gap:clamp(16px,2.4vw,26px);grid-template-columns:1fr;margin-top:clamp(30px,4vw,50px)}
+.depo__slot{margin-bottom:16px}
+.depo blockquote{font-size:clamp(15px,1.6vw,17px);color:var(--osso);line-height:1.62;margin-bottom:12px}
+.depo cite{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--acento);font-style:normal}
+.faq{margin-top:clamp(28px,4vw,46px);border-top:1px solid var(--linha)}
+.faq details{border-bottom:1px solid var(--linha)}
+.faq summary{
+  cursor:pointer;list-style:none;padding:22px 44px 22px 0;position:relative;
+  font-family:var(--display);text-transform:uppercase;font-size:clamp(15px,2vw,21px);
+  letter-spacing:-.01em;transition:color .3s ease;
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{
+  content:"+";position:absolute;right:6px;top:50%;transform:translateY(-50%);
+  font-family:var(--mono);font-size:22px;color:var(--acento);transition:transform .35s cubic-bezier(.16,1,.3,1);
+}
+.faq details[open] summary::after{transform:translateY(-50%) rotate(45deg)}
+.faq summary:hover{color:var(--acento)}
+.faq p{padding:0 0 24px;margin:0;max-width:70ch}
+.instrutor{display:grid;gap:clamp(28px,4vw,56px);grid-template-columns:1fr;align-items:center}
+@media (min-width:640px){ .depos{grid-template-columns:repeat(3,1fr)} .numeros{grid-template-columns:repeat(4,1fr)} }
+@media (min-width:900px){ .instrutor{grid-template-columns:.8fr 1fr} }
+</style>
+</head>
+<body class="t-academy">
+
+<header class="nav" id="nav">
+  <a class="nav__marca" href="../../index.html" aria-label="Barbearia LYU'S — início">
+    <img class="nav__logo" src="../../assets/logo-amarelo.png" alt="Barbearia LYU'S">
+  </a>
+
+  <nav class="nav__meio" aria-label="Navegação principal">
+    <a href="../../index.html" data-link="lyus">Barbearia</a>
+    <a href="#topo" data-link="academy" class="ativo">Academy</a>
+    <a href="../../lobbus/produtos/index.html" data-link="lobbus">Lóbbus</a>
+    <a href="../../index.html#visita" data-link="visita">Visita</a>
+  </nav>
+
+  <div class="nav__acoes">
+    <a class="btn" href="https://cashbarber.com.br/barbearialyus/inicio" target="_blank" rel="noopener">Agendar pelo App</a>
+    <a class="btn" href="https://wa.me/5544998306449" target="_blank" rel="noopener">Agendar pelo WhatsApp</a>
+  </div>
+
+  <button class="nav__abre" type="button" aria-expanded="false" aria-controls="painel" aria-label="Abrir menu">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<div class="painel" id="painel">
+  <nav class="painel__links" aria-label="Navegação">
+      <a href="../../index.html" data-link="lyus">Barbearia</a>
+      <a href="#topo" data-link="academy" class="ativo">Academy</a>
+      <a href="../../lobbus/produtos/index.html" data-link="lobbus">Lóbbus</a>
+      <a href="../../index.html#visita" data-link="visita">Visita</a>
+  </nav>
+  <div class="painel__acoes">
+    <a class="btn" href="https://cashbarber.com.br/barbearialyus/inicio" target="_blank" rel="noopener">Agendar pelo App</a>
+    <a class="btn" href="https://wa.me/5544998306449" target="_blank" rel="noopener">Agendar pelo WhatsApp</a>
+  </div>
+  <p class="painel__rodape">Colorado · PR — desde 2017</p>
+</div>
+
+<!-- ══════════ CAPA ══════════ -->
+<section class="capa" id="topo">
+  <div class="capa__midia" data-parallax>
+    <div class="slot" style="width:100%;height:100%;border:0;background:transparent">
+      <video src="midia/capa.mp4" poster="midia/capa-poster.jpg" autoplay muted loop playsinline></video>
+    </div>
+  </div>
+  <div class="capa__veu"></div>
+  <div class="capa__conteudo">
+    <img class="selo-topo" src="../../assets/unisingle-selo.png" alt="" aria-hidden="true">
+    <img class="capa__marca" src="../../assets/unisingle-logo.png" alt="Unisingle Academy">
+    <h1 class="capa__titulo">Formação<br>de <em>barbeiros</em></h1>
+    <div class="capa__linha">
+      <span class="eyebrow">Colorado · PR</span>
+      <span class="eyebrow mudo">Turmas presenciais</span>
+      <span class="eyebrow mudo">Vagas limitadas</span>
+    </div>
+    <p class="capa__sub">Não formamos cópias. Formamos profissionais que sabem quem são — e cobram por isso.</p>
+  </div>
+</section>
+
+<div class="trilho" data-trilho>
+  <svg viewBox="0 0 1200 60" preserveAspectRatio="none" aria-hidden="true">
+    <polyline points="0,46 100,14 200,46 300,14 400,46 500,14 600,46 700,14 800,46 900,14 1000,46 1100,14 1200,46"/>
+  </svg>
+</div>
+
+<!-- ══════════ ABERTURA ══════════ -->
+<section class="secao">
+  <p class="eyebrow reveal">Por que existimos</p>
+  <h2 class="acende" data-acende data-destaque="profissão,preço,valor">
+    A profissão não te paga pelo tempo na cadeira. Te paga pelo que o cliente sente ao levantar dela.
+  </h2>
+  <p class="reveal" style="margin-top:clamp(40px,6vw,70px)">Tem muito barbeiro cortando bem e ganhando mal. O que falta quase nunca é técnica — é saber construir uma identidade que sustente o preço, atender de um jeito que o cliente volte e enxergar a cadeira como negócio, não como bico.</p>
+  <p class="reveal" data-delay="1">É isso que a formação da Unisingle® Academy resolve: você sai daqui com a mão treinada <strong>e</strong> com a cabeça de quem sabe onde quer chegar.</p>
+</section>
+
+<!-- ══════════ PARA QUEM É ══════════ -->
+<section class="secao">
+  <p class="eyebrow reveal">Para quem é</p>
+  <h2 class="secao__titulo reveal" data-delay="1">Você se reconhece aqui?</h2>
+  <ul class="marcada reveal" data-delay="1">
+    <li><strong>Nunca pegou numa máquina</strong> e quer entrar na profissão do jeito certo, sem vício de aprendizado.</li>
+    <li><strong>Já corta há um tempo</strong>, mas trava no degradê, na navalha ou na barba e quer fechar essas lacunas.</li>
+    <li><strong>Corta bem e ganha mal</strong> — tem técnica, mas não consegue subir o preço nem fidelizar cliente.</li>
+    <li><strong>Quer abrir a própria barbearia</strong> e precisa entender o negócio antes de assinar um aluguel.</li>
+  </ul>
+</section>
+
+<!-- ══════════ O QUE VOCÊ APRENDE ══════════ -->
+<section class="secao">
+  <p class="eyebrow reveal">O conteúdo</p>
+  <h2 class="secao__titulo reveal" data-delay="1">O que você vai aprender</h2>
+  <p class="reveal" data-delay="1">Da primeira máquina na mão até o dia em que você define o próprio preço.</p>
+
+  <!-- [TROCAR] ajuste os módulos conforme a grade real do curso -->
+  <div class="grade">
+    <article class="bloco-n reveal"><span class="bloco-n__n">01</span><h3>Fundamentos</h3><p>Anatomia do couro cabeludo, tipos de fio, higiene, biossegurança e o uso correto de cada ferramenta.</p></article>
+    <article class="bloco-n reveal"><span class="bloco-n__n">02</span><h3>Máquina e pente</h3><p>Pilares do degradê: transição, altura, remoção de linha e leitura do formato da cabeça.</p></article>
+    <article class="bloco-n reveal"><span class="bloco-n__n">03</span><h3>Tesoura</h3><p>Cortes clássicos, texturização, desbaste e acabamento sobre pente.</p></article>
+    <article class="bloco-n reveal"><span class="bloco-n__n">04</span><h3>Barba e navalha</h3><p>Toalha quente, desenho de contorno, navalha na pele, alinhamento e finalização.</p></article>
+    <article class="bloco-n reveal"><span class="bloco-n__n">05</span><h3>Atendimento</h3><p>A conversa que fideliza: diagnóstico, escuta, indicação e pós-atendimento.</p></article>
+    <article class="bloco-n reveal"><span class="bloco-n__n">06</span><h3>Negócio</h3><p>Precificação, agenda, identidade profissional e os primeiros passos para a cadeira própria.</p></article>
+  </div>
+</section>
+
+<!-- ══════════ COMO FUNCIONA ══════════ -->
+<section class="secao">
+  <p class="eyebrow reveal">Formato</p>
+  <h2 class="secao__titulo reveal" data-delay="1">Como funciona</h2>
+
+  <!-- [TROCAR] números reais do curso -->
+  <div class="numeros reveal" data-delay="1">
+    <div class="numero"><b>—</b><span>Semanas de curso</span></div>
+    <div class="numero"><b>—</b><span>Horas de prática</span></div>
+    <div class="numero"><b>—</b><span>Alunos por turma</span></div>
+    <div class="numero"><b>—</b><span>Modelos atendidos</span></div>
+  </div>
+
+  <ol class="passos reveal" data-delay="2">
+    <li><strong>Aula prática desde o primeiro dia</strong>Você não passa semanas só assistindo. A máquina vai pra sua mão logo no começo, com acompanhamento de perto.</li>
+    <li><strong>Modelos reais na cadeira</strong>Treino em pessoa de verdade, com o tempo e a pressão de um atendimento real — não só em manequim.</li>
+    <li><strong>Correção individual</strong>Turma pequena de propósito. Dá pra corrigir postura, ângulo e pressão aluno por aluno.</li>
+    <li><strong>Certificado ao final</strong>Conclusão com certificado da Unisingle® Academy.</li>
+  </ol>
+</section>
+
+<!-- ══════════ A ESTRUTURA ══════════ -->
+<section class="secao">
+  <p class="eyebrow reveal">Onde você estuda</p>
+  <h2 class="secao__titulo reveal" data-delay="1">A estrutura</h2>
+  <p class="reveal" data-delay="1">Bancada montada, equipamento profissional e o mesmo ambiente onde a barbearia atende todo dia.</p>
+  <div class="galeria reveal" data-delay="2">
+    <div class="slot slot--quadro"><img src="midia/estrutura-1.jpg" alt="Estrutura da academia" loading="lazy"></div>
+    <div class="slot slot--quadro"><img src="midia/estrutura-2.jpg" alt="Estrutura da academia" loading="lazy"></div>
+    <div class="slot slot--quadro"><img src="midia/estrutura-3.jpg" alt="Estrutura da academia" loading="lazy"></div>
+    <div class="slot slot--quadro"><img src="midia/estrutura-4.jpg" alt="Estrutura da academia" loading="lazy"></div>
+  </div>
+</section>
+
+<!-- ══════════ QUEM ENSINA ══════════ -->
+<section class="secao">
+  <div class="instrutor">
+    <div class="slot slot--quadro reveal">
+      <img src="../../assets/unisingle-equipe.jpg" alt="Equipe da Unisingle Academy" loading="lazy">
+    </div>
+    <div>
+      <p class="eyebrow reveal">Quem ensina</p>
+      <h2 class="secao__titulo reveal" data-delay="1">Quem já vive disso</h2>
+      <!-- [TROCAR] história e credenciais reais de quem dá aula -->
+      <p class="reveal" data-delay="1">Quem ensina aqui atende na cadeira todo dia desde 2017, na Barbearia LYU'S. Não é teoria de apostila: é o que funciona com cliente real, agenda cheia e margem que fecha no fim do mês.</p>
+      <p class="reveal" data-delay="2">Você aprende o corte e também o que ninguém conta — como lidar com o cliente difícil, quando dizer não e por que o preço baixo é a armadilha mais cara da profissão.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FORMADOS ══════════ -->
+<section class="secao">
+  <p class="eyebrow reveal">Quem passou por aqui</p>
+  <h2 class="secao__titulo reveal" data-delay="1">Formados</h2>
+  <!-- [TROCAR] depoimentos reais dos alunos -->
+  <div class="depos">
+    <article class="depo reveal">
+      <div class="slot slot--quadro depo__slot"><img src="midia/aluno-1.jpg" alt="Aluno formado" loading="lazy"></div>
+      <blockquote>Espaço reservado para o depoimento do aluno.</blockquote>
+      <cite>Nome · cidade</cite>
+    </article>
+    <article class="depo reveal" data-delay="1">
+      <div class="slot slot--quadro depo__slot"><img src="midia/aluno-2.jpg" alt="Aluno formado" loading="lazy"></div>
+      <blockquote>Espaço reservado para o depoimento do aluno.</blockquote>
+      <cite>Nome · cidade</cite>
+    </article>
+    <article class="depo reveal" data-delay="2">
+      <div class="slot slot--quadro depo__slot"><img src="midia/aluno-3.jpg" alt="Aluno formado" loading="lazy"></div>
+      <blockquote>Espaço reservado para o depoimento do aluno.</blockquote>
+      <cite>Nome · cidade</cite>
+    </article>
+  </div>
+</section>
+
+<!-- ══════════ PERGUNTAS ══════════ -->
+<section class="secao">
+  <p class="eyebrow reveal">Dúvidas</p>
+  <h2 class="secao__titulo reveal" data-delay="1">Perguntas frequentes</h2>
+  <!-- [TROCAR] respostas conforme a realidade do curso -->
+  <div class="faq reveal" data-delay="1">
+    <details><summary>Preciso ter experiência?</summary><p>Não. A turma recebe tanto quem nunca pegou numa máquina quanto quem já corta e quer fechar lacunas. O acompanhamento é individual justamente por isso.</p></details>
+    <details><summary>Preciso levar equipamento?</summary><p>Espaço reservado para a resposta sobre kit e materiais.</p></details>
+    <details><summary>Qual o horário das aulas?</summary><p>Espaço reservado para os horários e dias da semana.</p></details>
+    <details><summary>Como funciona o pagamento?</summary><p>Espaço reservado para valores, parcelamento e formas de pagamento.</p></details>
+    <details><summary>Recebo certificado?</summary><p>Sim. Ao concluir a formação você recebe o certificado da Unisingle® Academy.</p></details>
+  </div>
+</section>
+
+<!-- ══════════ CTA FINAL ══════════ -->
+<section class="fecho" id="inscricao">
+  <div class="fecho__caixa">
+    <p class="eyebrow reveal">Próxima turma</p>
+    <h2 class="reveal" data-delay="1">As vagas<br>são contadas</h2>
+    <p class="reveal" data-delay="2">Turma pequena de propósito — é o que permite corrigir aluno por aluno. Chame no WhatsApp e a gente te passa datas, valores e o que você precisa levar.</p>
+    <a class="btn btn--grande reveal" data-delay="3" href="https://wa.me/5544998306449?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20quero%20fazer%20parte%20da%20pr%C3%B3xima%20turma%20da%20Unisingle%20Academy." target="_blank" rel="noopener">Quero fazer parte da próxima turma</a>
+  </div>
+</section>
+
+<footer class="rodape">
+  <div class="rodape__marcas">
+    <a href="../../index.html"><img src="../../assets/logo-amarelo.png" alt="Barbearia LYU'S"></a>
+    <img src="../../assets/unisingle-logo.png" alt="Unisingle Academy">
+  </div>
+  <span>Colorado · PR — desde 2017</span>
+</footer>
+
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="../../assets/header.js"></script>
+<script src="../../assets/base.js"></script>
+</body>
+</html>

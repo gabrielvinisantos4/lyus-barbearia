@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Produtos Lóbbus — Barbearia LYU'S</title>
+<meta name="description" content="A linha Lóbbus: pomada modeladora e balm para barba, testados na bancada da Barbearia LYU'S.">
+<meta name="theme-color" content="#0A0A0A">
+
+<!--
+  ═══════════════════════════════════════════════════════════
+  COMO COLOCAR OS VÍDEOS E FOTOS
+
+  Você NÃO precisa mexer neste arquivo para publicar mídia.
+  Basta salvar os arquivos na pasta  midia/  com estes nomes:
+
+    hero-video.mp4         vídeo do topo da página        ✔ já colocado
+    hero-video-poster.jpg  imagem de espera do topo       ✔ já colocado
+
+    pomada-video.mp4       vídeo da pomada                ✔ já colocado
+    pomada-video-poster.jpg                               ✔ já colocado
+    pomada-1.jpg  pomada-2.jpg  pomada-3.jpg    galeria da pomada
+
+    balm-video.mp4         vídeo do balm
+    balm-video-poster.jpg
+    balm-1.jpg  balm-2.jpg  balm-3.jpg          galeria do balm
+
+  Enquanto o arquivo não existir, o espaço mostra um aviso
+  com o nome esperado. Assim que você salvar o arquivo certo,
+  ele aparece sozinho.
+
+  PARA ADICIONAR UM PRODUTO NOVO: copie um bloco <section class="produto">
+  inteiro, troque os textos e use o prefixo do novo produto nos
+  nomes dos arquivos (ex.: shampoo-video.mp4, shampoo-1.jpg).
+
+  Textos a revisar estão marcados com  [TROCAR]
+  ═══════════════════════════════════════════════════════════
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/header.css">
+<link rel="stylesheet" href="../../assets/base.css">
+
+<style>
+/* específico desta página */
+.lobo-topo{width:clamp(140px,22vw,240px);margin-bottom:22px;filter:drop-shadow(0 0 60px rgba(53,180,222,.35))}
+.indice{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.indice a{
+  font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  border:1px solid var(--linha);padding:12px 16px;border-radius:2px;color:var(--fumaca);
+  min-height:44px;display:inline-flex;align-items:center;
+  transition:color .3s ease,border-color .3s ease,background .3s ease;
+}
+.indice a:hover{color:#0A0A0A;background:var(--acento);border-color:var(--acento)}
+.produto__marca{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--acento)}
+.produto h3{font-size:clamp(16px,2.1vw,22px);margin-bottom:14px}
+.produto__ficha{margin-top:clamp(26px,3.4vw,42px);border-top:1px solid var(--linha)}
+.produto__ficha div{display:flex;justify-content:space-between;gap:18px;padding:13px 0;border-bottom:1px solid var(--linha);font-family:var(--mono);font-size:12px;letter-spacing:.08em}
+.produto__ficha dt{color:var(--fumaca);text-transform:uppercase}
+.produto__ficha dd{color:var(--osso);text-align:right}
+</style>
+</head>
+<body class="t-lobbus">
+
+<header class="nav" id="nav">
+  <a class="nav__marca" href="../../index.html" aria-label="Barbearia LYU'S — início">
+    <img class="nav__logo" src="../../assets/logo-amarelo.png" alt="Barbearia LYU'S">
+  </a>
+
+  <nav class="nav__meio" aria-label="Navegação principal">
+    <a href="../../index.html" data-link="lyus">Barbearia</a>
+    <a href="../../academy/curso/index.html" data-link="academy">Academy</a>
+    <a href="#topo" data-link="lobbus" class="ativo">Lóbbus</a>
+    <a href="../../index.html#visita" data-link="visita">Visita</a>
+  </nav>
+
+  <div class="nav__acoes">
+    <a class="btn" href="https://cashbarber.com.br/barbearialyus/inicio" target="_blank" rel="noopener">Agendar pelo App</a>
+    <a class="btn" href="https://wa.me/5544998306449" target="_blank" rel="noopener">Agendar pelo WhatsApp</a>
+  </div>
+
+  <button class="nav__abre" type="button" aria-expanded="false" aria-controls="painel" aria-label="Abrir menu">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<div class="painel" id="painel">
+  <nav class="painel__links" aria-label="Navegação">
+      <a href="../../index.html" data-link="lyus">Barbearia</a>
+      <a href="../../academy/curso/index.html" data-link="academy">Academy</a>
+      <a href="#topo" data-link="lobbus" class="ativo">Lóbbus</a>
+      <a href="../../index.html#visita" data-link="visita">Visita</a>
+  </nav>
+  <div class="painel__acoes">
+    <a class="btn" href="https://cashbarber.com.br/barbearialyus/inicio" target="_blank" rel="noopener">Agendar pelo App</a>
+    <a class="btn" href="https://wa.me/5544998306449" target="_blank" rel="noopener">Agendar pelo WhatsApp</a>
+  </div>
+  <p class="painel__rodape">Colorado · PR — desde 2017</p>
+</div>
+
+<!-- ══════════ CAPA ══════════ -->
+<section class="capa" id="topo">
+  <div class="capa__midia" data-parallax>
+    <div class="slot" style="width:100%;height:100%;border:0;background:transparent">
+      <video src="midia/hero-video.mp4" poster="midia/hero-video-poster.jpg" autoplay muted loop playsinline></video>
+    </div>
+  </div>
+  <div class="capa__veu"></div>
+  <div class="capa__conteudo">
+    <img class="lobo-topo" src="../../assets/lobbus-logo.png" alt="Lóbbus">
+    <h1 class="capa__titulo">A linha<br>da <em>casa</em></h1>
+    <p class="capa__sub">Nada entra no catálogo antes de passar semanas em uso real nas três cadeiras da LYU'S. Se não aguenta o dia de trabalho de um barbeiro, não vira produto.</p>
+    <div class="indice">
+      <a href="#pomada">01 · Pomada Modeladora</a>
+      <a href="#balm">02 · Balm para Barba</a>
+    </div>
+  </div>
+</section>
+
+<div class="trilho" data-trilho>
+  <svg viewBox="0 0 1200 60" preserveAspectRatio="none" aria-hidden="true">
+    <polyline points="0,46 100,14 200,46 300,14 400,46 500,14 600,46 700,14 800,46 900,14 1000,46 1100,14 1200,46"/>
+  </svg>
+</div>
+
+<!-- ══════════ ABERTURA ══════════ -->
+<section class="secao">
+  <p class="eyebrow reveal">Por que existe</p>
+  <h2 class="acende" data-acende data-destaque="bancada,barbeiro,dura">
+    Produto de barbeiro não se testa em laboratório. Se testa na bancada, no cliente que volta em quinze dias e diz se dura.
+  </h2>
+</section>
+
+<!-- ══════════════════════════════════════════════════
+     PRODUTO 01 — POMADA MODELADORA
+     ══════════════════════════════════════════════════ -->
+<section class="produto" id="pomada">
+  <div class="produto__topo">
+    <div class="slot slot--retrato reveal">
+      <video src="midia/pomada-video.mp4" poster="midia/pomada-video-poster.jpg" autoplay muted loop playsinline></video>
+    </div>
+    <div>
+      <p class="produto__marca reveal">Lóbbus® · Produto 01</p>
+      <h2 class="produto__nome reveal" data-delay="1">Pomada<br>Modeladora</h2>
+      <!-- [TROCAR] descrição conforme o produto real -->
+      <p class="reveal" data-delay="1">Fixação firme com acabamento seco, sem aquele brilho de gel que denuncia o produto. Modela o penteado, segura o topete e continua respondendo ao pente no fim do dia.</p>
+      <p class="reveal" data-delay="2">Base à base de água: sai no banho com água morna, sem precisar de duas lavagens nem deixar o couro pesado.</p>
+
+      <!-- [TROCAR] ficha técnica real -->
+      <dl class="produto__ficha reveal" data-delay="2">
+        <div><dt>Fixação</dt><dd>Forte</dd></div>
+        <div><dt>Acabamento</dt><dd>Seco / matte</dd></div>
+        <div><dt>Base</dt><dd>Água</dd></div>
+        <div><dt>Conteúdo</dt><dd>—</dd></div>
+      </dl>
+    </div>
+  </div>
+
+  <div class="produto__corpo">
+    <div class="reveal">
+      <h3>Benefícios</h3>
+      <ul class="marcada">
+        <li><strong>Segura o dia inteiro</strong> sem endurecer o fio nem descascar.</li>
+        <li><strong>Acabamento sem brilho</strong>, com aspecto de cabelo natural e não de cabelo com produto.</li>
+        <li><strong>Remodela sem reaplicar</strong> — passou a mão, o penteado volta.</li>
+        <li><strong>Sai fácil no banho</strong>, sem resíduo acumulado no couro.</li>
+      </ul>
+    </div>
+    <div class="reveal" data-delay="1">
+      <h3>Modo de usar</h3>
+      <ol class="passos">
+        <li><strong>Cabelo seco ou levemente úmido</strong>Em cabelo encharcado a fixação cai pela metade.</li>
+        <li><strong>Uma porção do tamanho de um grão de milho</strong>Menos do que você imagina. Dá pra repetir; tirar excesso é mais chato.</li>
+        <li><strong>Emulsione entre as palmas</strong>Esfregue até a pomada ficar transparente antes de encostar no cabelo.</li>
+        <li><strong>Da raiz para as pontas</strong>Distribua na base primeiro, depois modele o desenho com os dedos ou com o pente.</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="galeria reveal">
+    <div class="slot slot--quadro"><img src="midia/pomada-1.jpg" alt="Pomada Modeladora Lóbbus" loading="lazy"></div>
+    <div class="slot slot--quadro"><img src="midia/pomada-2.jpg" alt="Pomada Modeladora Lóbbus" loading="lazy"></div>
+    <div class="slot slot--quadro"><img src="midia/pomada-3.jpg" alt="Pomada Modeladora Lóbbus" loading="lazy"></div>
+  </div>
+
+  <div class="produto__cta reveal">
+    <a class="btn btn--grande" href="https://wa.me/5544998306449?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20tenho%20interesse%20na%20Pomada%20Modeladora%20L%C3%B3bbus." target="_blank" rel="noopener">Comprar Pomada</a>
+    <small>Atendimento pelo WhatsApp</small>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════
+     PRODUTO 02 — BALM PARA BARBA
+     ══════════════════════════════════════════════════ -->
+<section class="produto" id="balm">
+  <div class="produto__topo">
+    <div class="slot slot--retrato reveal">
+      <video src="midia/balm-video.mp4" poster="midia/balm-video-poster.jpg" autoplay muted loop playsinline></video>
+    </div>
+    <div>
+      <p class="produto__marca reveal">Lóbbus® · Produto 02</p>
+      <h2 class="produto__nome reveal" data-delay="1">Balm<br>para Barba</h2>
+      <!-- [TROCAR] descrição conforme o produto real -->
+      <p class="reveal" data-delay="1">Hidrata, alinha e dá corpo ao fio sem pesar. Feito para barba que coça, que abre no meio ou que cresce em direções diferentes — o balm deita o fio e mantém o contorno desenhado.</p>
+      <p class="reveal" data-delay="2">Também trabalha a pele por baixo, que é onde a coceira e a descamação começam.</p>
+
+      <!-- [TROCAR] ficha técnica real -->
+      <dl class="produto__ficha reveal" data-delay="2">
+        <div><dt>Ação</dt><dd>Hidrata e alinha</dd></div>
+        <div><dt>Acabamento</dt><dd>Natural</dd></div>
+        <div><dt>Indicação</dt><dd>Barba curta a longa</dd></div>
+        <div><dt>Conteúdo</dt><dd>—</dd></div>
+      </dl>
+    </div>
+  </div>
+
+  <div class="produto__corpo">
+    <div class="reveal">
+      <h3>Benefícios</h3>
+      <ul class="marcada">
+        <li><strong>Acaba com a coceira</strong> tratando a pele embaixo do fio, não só o fio.</li>
+        <li><strong>Deita o pêlo rebelde</strong> e fecha as falhas aparentes ao alinhar o crescimento.</li>
+        <li><strong>Mantém o contorno</strong> do desenho feito na barbearia por mais tempo.</li>
+        <li><strong>Deixa a barba macia</strong> — quem encosta percebe a diferença.</li>
+      </ul>
+    </div>
+    <div class="reveal" data-delay="1">
+      <h3>Modo de usar</h3>
+      <ol class="passos">
+        <li><strong>Barba limpa e seca</strong>Depois do banho é o melhor momento, com a pele ainda receptiva.</li>
+        <li><strong>Uma porção pequena nas mãos</strong>Esquente entre as palmas até derreter e ficar transparente.</li>
+        <li><strong>Massageie a pele primeiro</strong>Chegue na raiz com as pontas dos dedos antes de trabalhar o comprimento.</li>
+        <li><strong>Penteie para alinhar</strong>Use pente ou escova para deitar o fio no sentido do crescimento.</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="galeria reveal">
+    <div class="slot slot--quadro"><img src="midia/balm-1.jpg" alt="Balm para Barba Lóbbus" loading="lazy"></div>
+    <div class="slot slot--quadro"><img src="midia/balm-2.jpg" alt="Balm para Barba Lóbbus" loading="lazy"></div>
+    <div class="slot slot--quadro"><img src="midia/balm-3.jpg" alt="Balm para Barba Lóbbus" loading="lazy"></div>
+  </div>
+
+  <div class="produto__cta reveal">
+    <a class="btn btn--grande" href="https://wa.me/5544998306449?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20tenho%20interesse%20no%20Balm%20para%20Barba%20L%C3%B3bbus." target="_blank" rel="noopener">Comprar Balm</a>
+    <small>Atendimento pelo WhatsApp</small>
+  </div>
+</section>
+
+<footer class="rodape">
+  <div class="rodape__marcas">
+    <a href="../../index.html"><img src="../../assets/logo-amarelo.png" alt="Barbearia LYU'S"></a>
+    <img src="../../assets/lobbus-logo.png" alt="Lóbbus">
+  </div>
+  <span>Colorado · PR — desde 2017</span>
+</footer>
+
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="../../assets/header.js"></script>
+<script src="../../assets/base.js"></script>
+</body>
+</html>

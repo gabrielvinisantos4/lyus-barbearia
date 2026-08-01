@@ -1,0 +1,30 @@
+COMO PUBLICAR AS FOTOS E VÍDEOS DOS PRODUTOS
+
+Salve os arquivos NESTA pasta, com exatamente estes nomes.
+Não é preciso alterar nenhum código.
+
+TOPO DA PÁGINA
+  hero-video.mp4          já colocado
+  hero-video-poster.jpg   já colocado
+
+POMADA MODELADORA
+  pomada-video.mp4        já colocado
+  pomada-video-poster.jpg já colocado
+  pomada-1.jpg            galeria
+  pomada-2.jpg
+  pomada-3.jpg
+
+BALM PARA BARBA
+  balm-video.mp4
+  balm-video-poster.jpg
+  balm-1.jpg              galeria
+  balm-2.jpg
+  balm-3.jpg
+
+Enquanto o arquivo não existir, o espaço na página mostra
+um aviso com o nome esperado. Assim que o arquivo for salvo
+aqui, ele aparece sozinho.
+
+PRODUTO NOVO: no index.html, copie um bloco <section class="produto">
+inteiro, troque os textos e use um prefixo novo nos arquivos
+(ex.: shampoo-video.mp4, shampoo-1.jpg).
